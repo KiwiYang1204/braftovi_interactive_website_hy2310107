@@ -13,7 +13,7 @@ const HomeIpad = () => {
   useEffect(() => {
     if (state === 3) {
       const point = round.filter(p => p).length * 50;
-      fetch('https://braftovi-interactive-website-hy2310107-7aoeuk1ao.vercel.app/record', {
+      fetch('http://localhost:8080/user', {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -28,7 +28,7 @@ const HomeIpad = () => {
   }, [state]);
 
   const createUser = async (val) => {
-    const result = await fetch('https://braftovi-interactive-website-hy2310107-7aoeuk1ao.vercel.app/user', {
+    const result = await fetch('http://localhost:8080/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
