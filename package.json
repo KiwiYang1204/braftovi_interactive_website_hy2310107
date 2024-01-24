@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon server.js --ignore client",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.js",
     "lint": "next lint"
   },
   "dependencies": {

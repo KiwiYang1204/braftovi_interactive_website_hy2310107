@@ -59,3 +59,5 @@ mongoose.connect(mongodbUrl)
   .catch(e => {
     throw new Error(e.message);
   })
+
+  export default httpServer;

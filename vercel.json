@@ -1,9 +1,0 @@
-{
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "https://braftovi-interactive-website-hy2310107.vercel.app/:path*",
-      "methods": ["GET", "POST", "PUT", "DELETE"]
-    }
-  ]
-}
