@@ -1,4 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: [
+      "http://localhost:8080"
+    ]
+  },
+  reactStrictMode: false
+};
 
 export default nextConfig;
