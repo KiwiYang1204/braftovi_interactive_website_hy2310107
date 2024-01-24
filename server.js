@@ -13,12 +13,14 @@ const bodyPaser = require('body-parser');
 const mongoose = require('mongoose');
 const mongodbUrl = 'mongodb+srv://kiwi:ntVRH4AREwiUDkaL@cluster0.rj2uan9.mongodb.net/braftovi?retryWrites=true&w=majority';
 
+const expressServer = express();
+const httpServer = createServer(expressServer);
+
 mongoose.connect(mongodbUrl)
   .then(() => {
     app.prepare()
       .then(() => {
-        const expressServer = express();
-        const httpServer = createServer(expressServer);
+        
         const ws = new Server(httpServer);
 
         const userRouter = require('./src/server/routers/userRouter');

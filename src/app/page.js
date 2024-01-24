@@ -14,7 +14,7 @@ export default function Home() {
   });
 
   const fetchRankingData = async () => {
-    const response = await fetch('https://braftovi-interactive-website-hy2310107.vercel.app/record', {
+    const response = await fetch('https://braftovi-interactive-website-hy2310107.vercel.app/api/record', {
       headers: {
         'Content-Type': 'application/json'
       },
