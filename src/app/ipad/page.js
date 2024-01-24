@@ -13,7 +13,7 @@ const HomeIpad = () => {
   useEffect(() => {
     if (state === 3) {
       const point = round.filter(p => p).length * 50;
-      fetch('http://34.82.217.255:8080/user', {
+      fetch('http://34.82.217.255:8080/record', {
         headers: {
           'Content-Type': 'application/json'
         },
