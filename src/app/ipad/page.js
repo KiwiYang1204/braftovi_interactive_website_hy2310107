@@ -13,7 +13,7 @@ const HomeIpad = () => {
   useEffect(() => {
     if (state === 3) {
       const point = round.filter(p => p).length * 50;
-      fetch('http://localhost:8080/user', {
+      fetch('http://34.82.217.255:8080/user', {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -28,7 +28,7 @@ const HomeIpad = () => {
   }, [state]);
 
   const createUser = async (val) => {
-    const result = await fetch('http://localhost:8080/user', {
+    const result = await fetch('http://34.82.217.255:8080/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

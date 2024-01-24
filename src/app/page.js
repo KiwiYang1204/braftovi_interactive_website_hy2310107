@@ -14,7 +14,7 @@ export default function Home() {
   });
 
   const fetchRankingData = async () => {
-    const response = await fetch('http://localhost:8080/record', {
+    const response = await fetch('http://34.82.217.255:8080/record', {
       headers: {
         'Content-Type': 'application/json'
       },
