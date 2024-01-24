@@ -16,7 +16,7 @@ export const SocketProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const ws = io('ws://braftovi-interactive-website-hy2310107.vercel.app', {
+    const ws = io('wss://braftovi-interactive-website-hy2310107.vercel.app', {
       transports: ['websocket']
     });
 
