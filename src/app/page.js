@@ -14,7 +14,7 @@ export default function Home() {
   });
 
   const fetchRankingData = async () => {
-    const response = await fetch('http://localhost:8080/record', {
+    const response = await fetch('https://braftovi-interactive-website-hy2310107.vercel.app/record', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -229,7 +229,7 @@ export default function Home() {
           </div>
           <div className="ranking-list" style={{ top: '293px', left: '548px', color: 'white' }}>
             {
-              rankingData.two[0]?.score
+              100
             }
           </div>
           <div className="ranking-list-container" style={{ top: '446px', left: '288px' }}>
@@ -251,7 +251,7 @@ export default function Home() {
           </div>
           <div className="ranking-list" style={{ top: '583px', left: '548px', textAlign: 'center', width: '46px' }}>
             {
-              rankingData.four[0]?.score
+              0
             }
           </div>
         </>

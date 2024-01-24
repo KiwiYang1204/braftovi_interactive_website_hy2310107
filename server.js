@@ -47,7 +47,7 @@ mongoose.connect(mongodbUrl)
 
         httpServer.listen(8080, err => {
           if (err) throw err;
-          console.log(">Ready on http://localhost:8080");
+          console.log(">Ready on https://braftovi-interactive-website-hy2310107.vercel.app/");
         })
       })
       .catch(e => {
