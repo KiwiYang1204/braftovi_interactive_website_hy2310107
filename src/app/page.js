@@ -8,6 +8,7 @@ import Image from "next/image";
 export default function Home() {
   const { message, sendMessage } = useContext(SocketContext);
   const [rankingData, setRankingData] = useState([]);
+  const [RankingList, setRankingList] = useState(styled.div``);
 
   const fetchRankingData = async () => {
     const response = await fetch('http://34.82.217.255:8080/record', {
@@ -18,25 +19,6 @@ export default function Home() {
     });
 
     const { result } = await response.json();
-
-    // let temp = {
-    //   one: [],
-    //   two: [],
-    //   three: [],
-    //   four: []
-    // };
-
-    // const scoreCategories = {
-    //   0: temp.four,
-    //   50: temp.three,
-    //   100: temp.two,
-    // };
-    
-    // result.forEach(data => {
-    //   const category = scoreCategories[data.score] || temp.one;
-    //   category.push({ score: data.score, name: data.user.username, id: data._id });
-    // });
-
     setRankingData(result);
   };
 
@@ -46,21 +28,51 @@ export default function Home() {
     }
   }, [message.type]);
 
+  useEffect(() => {
+    const height = document?.getElementById('list')?.scrollHeight - 580;
+    const keyframe = keyframes`
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(0, -${height}px, 0);
+        transform: translate3d(0, -${height}px, 0);
+    }
+    `;
+    const div = styled.div`
+      -webkit-animation: 10s rowup linear infinite normal;
+      animation: 10s ${keyframe} linear infinite normal;
+      position: relative;
+      width: 100%;
+    `;
+
+    setRankingList(div);
+    console.log(height);
+  }, [rankingData]);
+
   return (
     <div className="background">
       {
         message.type === 'R' &&
         <div className="ranking-list">
-          {
-            rankingData?.map((data) => (
-              <div key={data.id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                <div  className="ranking-item">
-                  <div style={{ position: 'absolute', top: '13px', left: '30px', color: 'white', fontSize: '24px' }}>{data.user.username}</div>
-                  <div style={{ position: 'absolute', top: '13px', left: '295px', color: 'white', fontSize: '24px', width: '45px', textAlign: 'center' }}>{data.score}</div>
-                </div>
-              </div>
-            ))
-          }
+          <div id='list'>
+            <RankingList>
+              {
+                rankingData?.map((data) => (
+                  <div key={data.id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                    <div  className="ranking-item">
+                      <div style={{ position: 'absolute', top: '-15px', left: '-80px' }}>
+                        <Image width={69} height={98} src={`http://34.82.217.255:8080/assets/no${data.rank}.png`} alt="rank"/>
+                      </div>
+                      <div style={{ position: 'absolute', top: '13px', left: '30px', color: 'white', fontSize: '24px' }}>{data.user.username}</div>
+                      <div style={{ position: 'absolute', top: '13px', left: '295px', color: 'white', fontSize: '24px', width: '45px', textAlign: 'center' }}>{data.score}</div>
+                    </div>
+                  </div>
+                ))
+              }
+            </RankingList>
+          </div>
         </div>
       }
       {/* {
