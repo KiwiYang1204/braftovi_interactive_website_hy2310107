@@ -50,13 +50,20 @@ export default function Home() {
     <div className="background">
       {
         message.type === 'R' &&
-        <>
+        <div className="ranking-list">
           {
-            rankingData?.map((data) => <div key={data.id}>{data.user.username}</div>)
+            rankingData?.map((data) => (
+              <div key={data.id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <div  className="ranking-item">
+                  <div style={{ position: 'absolute', top: '13px', left: '30px', color: 'white', fontSize: '24px' }}>{data.user.username}</div>
+                  <div style={{ position: 'absolute', top: '13px', left: '295px', color: 'white', fontSize: '24px', width: '45px', textAlign: 'center' }}>{data.score}</div>
+                </div>
+              </div>
+            ))
           }
-        </>
+        </div>
       }
-      {
+      {/* {
         message.type === 'R' &&
         <Image 
           src="http://34.82.217.255:8080/assets/ranking.png"
@@ -64,7 +71,7 @@ export default function Home() {
           height={960}
           alt="ranking"
         />
-      }
+      } */}
       {
         message.type === 'Q' &&
         message.round === 1 &&
