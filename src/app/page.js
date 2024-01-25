@@ -29,15 +29,15 @@ export default function Home() {
   }, [message.type]);
 
   useEffect(() => {
-    const height = document?.getElementById('list')?.scrollHeight - 580;
+    const height = document?.getElementById('list')?.scrollHeight > 620 ? document?.getElementById('list')?.scrollHeight - 580 : 0;
     const keyframe = keyframes`
     0% {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0);
     }
     100% {
-        -webkit-transform: translate3d(0, -${height}px, 0);
-        transform: translate3d(0, -${height}px, 0);
+      -webkit-transform: translate3d(0, -${height}px, 0);
+      transform: translate3d(0, -${height}px, 0);
     }
     `;
     const div = styled.div`
@@ -62,8 +62,8 @@ export default function Home() {
                 rankingData?.map((data) => (
                   <div key={data.id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <div  className="ranking-item">
-                      <div style={{ position: 'absolute', top: '-15px', left: '-80px' }}>
-                        <Image width={69} height={98} src={`http://34.82.217.255:8080/assets/no${data.rank}.png`} alt="rank"/>
+                      <div style={{ position: 'absolute', top: '-8px', left: '-80px' }}>
+                        <Image width={data.rank !== 4 ? 69 : 65} height={data.rank !== 4 ? 98 : 65} src={`http://34.82.217.255:8080/assets/no${data.rank}.png`} alt="rank"/>
                       </div>
                       <div style={{ position: 'absolute', top: '13px', left: '30px', color: 'white', fontSize: '24px' }}>{data.user.username}</div>
                       <div style={{ position: 'absolute', top: '13px', left: '295px', color: 'white', fontSize: '24px', width: '45px', textAlign: 'center' }}>{data.score}</div>
