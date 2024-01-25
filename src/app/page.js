@@ -56,7 +56,7 @@ export default function Home() {
       {
         message.type === 'R' &&
         <div className="ranking-list">
-          <div id='list'>
+          <div id='list' style={{ marginLeft: '5rem' }}>
             <RankingList>
               {
                 rankingData?.map((data) => (
