@@ -3,6 +3,7 @@ import "./page.css";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "./context/socket";
 import styled, { keyframes } from "styled-components";
+import Image from "next/image";
 
 export default function Home() {
   const { message, sendMessage } = useContext(SocketContext);
@@ -97,16 +98,20 @@ export default function Home() {
       }
       {
         message.type === 'R' &&
-        <img 
-          src='/assets/ranking.png'
-          alt='ranking'
+        <Image 
+          src="http://34.82.217.255:8080/assets/ranking.png"
+          width={768}
+          height={960}
+          alt="ranking"
         />
       }
       {
         message.type === 'Q' &&
         message.round === 1 &&
-        <img 
-          src='/assets/q1.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/q1.png"
+          width={768}
+          height={960}
           alt='q1'
         />
       }
@@ -114,25 +119,31 @@ export default function Home() {
         message.type === 'A' &&
         message.round === 1 &&
         message.isCorrect &&
-        <img 
-          src='/assets/a1v.png'
-          alt='a1v'
+        <Image 
+          src="http://34.82.217.255:8080/assets/a1v.png"
+          width={768}
+          height={960}
+          alt="a1v"
         />
       }
       {
         message.type === 'A' &&
         message.round === 1 &&
         !message.isCorrect &&
-        <img 
-          src='/assets/a1x.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/a1x.png"
+          width={768}
+          height={960}
           alt='a1x'
         />
       }
       {
         message.type === 'Q' &&
         message.round === 2 &&
-        <img 
-          src='/assets/q2.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/q2.png"
+          width={768}
+          height={960}
           alt='q2'
         />
       }
@@ -140,8 +151,10 @@ export default function Home() {
         message.type === 'A' &&
         message.round === 2 &&
         message.isCorrect &&
-        <img 
-          src='/assets/a2v.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/a2v.png"
+          width={768}
+          height={960}
           alt='a2v'
         />
       }
@@ -149,16 +162,20 @@ export default function Home() {
         message.type === 'A' &&
         message.round === 2 &&
         !message.isCorrect &&
-        <img 
-          src='/assets/a2x.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/a2x.png"
+          width={768}
+          height={960}
           alt='a2x'
         />
       }
       {
         message.type === 'Q' &&
         message.round === 3 &&
-        <img 
-          src='/assets/q3.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/q3.png"
+          width={768}
+          height={960}
           alt='q3'
         />
       }
@@ -166,8 +183,10 @@ export default function Home() {
         message.type === 'A' &&
         message.round === 3 &&
         message.isCorrect &&
-        <img 
-          src='/assets/a3v.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/a3v.png"
+          width={768}
+          height={960}
           alt='a3v'
         />
       }
@@ -175,40 +194,50 @@ export default function Home() {
         message.type === 'A' &&
         message.round === 3 &&
         !message.isCorrect &&
-        <img 
-          src='/assets/a3x.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/a3x.png"
+          width={768}
+          height={960}
           alt='a3x'
         />
       }
       {
         message.type === 'S' &&
         message.score === 0 &&
-        <img 
-          src='/assets/0p.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/0p.png"
+          width={768}
+          height={960}
           alt='0p'
         />
       }
       {
         message.type === 'S' &&
         message.score === 50 &&
-        <img 
-          src='/assets/50p.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/50p.png"
+          width={768}
+          height={960}
           alt='50p'
         />
       }
       {
         message.type === 'S' &&
         message.score === 100 &&
-        <img 
-          src='/assets/100p.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/100p.png"
+          width={768}
+          height={960}
           alt='100p'
         />
       }
       {
         message.type === 'S' &&
         message.score === 150 &&
-        <img 
-          src='/assets/150p.png'
+        <Image 
+          src="http://34.82.217.255:8080/assets/150p.png"
+          width={768}
+          height={960}
           alt='150p'
         />
       }
