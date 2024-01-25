@@ -7,12 +7,7 @@ import Image from "next/image";
 
 export default function Home() {
   const { message, sendMessage } = useContext(SocketContext);
-  const [rankingData, setRankingData] = useState({
-    one: [],
-      two: [],
-      three: [],
-      four: []
-  });
+  const [rankingData, setRankingData] = useState([]);
 
   const fetchRankingData = async () => {
     const response = await fetch('http://34.82.217.255:8080/record', {
@@ -24,25 +19,25 @@ export default function Home() {
 
     const { result } = await response.json();
 
-    let temp = {
-      one: [],
-      two: [],
-      three: [],
-      four: []
-    };
+    // let temp = {
+    //   one: [],
+    //   two: [],
+    //   three: [],
+    //   four: []
+    // };
 
-    const scoreCategories = {
-      0: temp.four,
-      50: temp.three,
-      100: temp.two,
-    };
+    // const scoreCategories = {
+    //   0: temp.four,
+    //   50: temp.three,
+    //   100: temp.two,
+    // };
     
-    result.forEach(data => {
-      const category = scoreCategories[data.score] || temp.one;
-      category.push({ score: data.score, name: data.user.username, id: data._id });
-    });
+    // result.forEach(data => {
+    //   const category = scoreCategories[data.score] || temp.one;
+    //   category.push({ score: data.score, name: data.user.username, id: data._id });
+    // });
 
-    setRankingData(temp);
+    setRankingData(result);
   };
 
   useEffect(() => {
@@ -56,44 +51,9 @@ export default function Home() {
       {
         message.type === 'R' &&
         <>
-          <div className="ranking-list-container" style={{ top: '136px', left: '288px' }}>
-            <RankingList 
-              item={rankingData.one}
-            />
-          </div>
-          <div className="ranking-list" style={{ top: '136px', left: '548px' }}>
-            {
-              150
-            }
-          </div>
-          <div className="ranking-list-container" style={{ top: '288px', left: '288px' }}>
-            <RankingList 
-              item={rankingData.two}
-            />
-          </div>
-          <div className="ranking-list" style={{ top: '293px', left: '548px', color: 'white' }}>
-            {
-              100
-            }
-          </div>
-          <div className="ranking-list-container" style={{ top: '443px', left: '288px' }}>
-            <RankingList 
-              item={rankingData.three}
-            />
-          </div>
-          <div className="ranking-list" style={{ top: '446px', left: '548px', textAlign: 'center', width: '46px' }}>
-            50
-          </div>
-          <div className="ranking-list-container" style={{ top: '580px', left: '288px' }}>
-            <RankingList 
-              item={rankingData.four}
-            />
-          </div>
-          <div className="ranking-list" style={{ top: '583px', left: '548px', textAlign: 'center', width: '46px' }}>
-            {
-              0
-            }
-          </div>
+          {
+            rankingData?.map((data) => <div key={data.id}>{data.user.username}</div>)
+          }
         </>
       }
       {
