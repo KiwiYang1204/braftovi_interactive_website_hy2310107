@@ -20,7 +20,9 @@ export default function Home() {
       },
       method: 'get'
     });
+
     const { result } = await response.json();
+    
     let temp = {
       one: [],
       two: [],
@@ -28,32 +30,15 @@ export default function Home() {
       four: []
     };
 
+    const scoreCategories = {
+      0: temp.four,
+      50: temp.three,
+      100: temp.two,
+    };
+    
     result.forEach(data => {
-      if (data.score === 0) {
-        temp.four.push({
-          score: data.score,
-          name: data.user.username,
-          id: data._id
-        });
-      } else if (data.score === 50) {
-        temp.three.push({
-          score: data.score,
-          name: data.user.username,
-          id: data._id
-        });
-      } else if (data.score === 100) {
-        temp.two.push({
-          score: data.score,
-          name: data.user.username,
-          id: data._id
-        });
-      } else {
-        temp.one.push({
-          score: data.score,
-          name: data.user.username,
-          id: data._id
-        });
-      }
+      const category = scoreCategories[data.score] || temp.one;
+      category.push({ score: data.score, name: data.user.username, id: data._id });
     });
 
     setRankingData(temp);
@@ -65,155 +50,15 @@ export default function Home() {
     }
   }, [message.type]);
 
-  const init = styled.div`
-    position: absolute;
-    color: white;
-    font-size: 26px;
-  `;
-
-  const [RankingList, setRankingList] = useState(init);
-  const [RankingList2, setRankingList2] = useState(init);
-  const [RankingList3, setRankingList3] = useState(init);
-  const [RankingList4, setRankingList4] = useState(init);
-
-  useEffect(() => {
-    if (rankingData.one.length > 0) {
-      let count = rankingData.one.length * 2 - 1;
-      let duration = (100 / count);
-      let offset = duration - 5;
-      const ani = keyframes`
-        ${rankingData.one.map((data, i) => {
-      
-            return `
-              ${(duration + offset) * i}%, ${((duration + offset) * i) + duration}% {
-                transform: translate3d( 0, -${(100 / rankingData.one.length) * (i)}%, 0);
-              }
-            `;
-          
-        })}
-        100% {
-          transform: translate3d( 0, -${(100 / rankingData.one.length) * (rankingData.one.length - 1)}%, 0);
-        }
-      `;
-      const rankingList = styled.div`
-        position: absolute;
-        color: white;
-        font-size: 26px;
-        animation-name: ${ani};
-        animation-duration: ${rankingData.one.length * 3}s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      `;
-
-      setRankingList(rankingList);
-    }
-
-    if (rankingData.two.length > 0) {
-      let count = rankingData.two.length * 2 - 1;
-      let duration = (100 / count);
-      let offset = duration - 5;
-      const ani = keyframes`
-        ${rankingData.two.map((data, i) => {
-      
-            return `
-              ${(duration + offset) * i}%, ${((duration + offset) * i) + duration}% {
-                transform: translate3d( 0, -${(100 / rankingData.two.length) * (i)}%, 0);
-              }
-            `;
-          
-        })}
-        100% {
-          transform: translate3d( 0, -${(100 / rankingData.two.length) * (rankingData.two.length - 1)}%, 0);
-        }
-      `;
-      const rankingList = styled.div`
-        position: absolute;
-        color: white;
-        font-size: 26px;
-        animation-name: ${ani};
-        animation-duration: ${rankingData.two.length * 3}s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      `;
-
-      setRankingList2(rankingList);
-    }
-    if (rankingData.three.length > 0) {
-      let count = rankingData.three.length * 2 - 1;
-      let duration = (100 / count);
-      let offset = duration - 5;
-      const ani = keyframes`
-        ${rankingData.three.map((data, i) => {
-      
-            return `
-              ${(duration + offset) * i}%, ${((duration + offset) * i) + duration}% {
-                transform: translate3d( 0, -${(100 / rankingData.three.length) * (i)}%, 0);
-              }
-            `;
-          
-        })}
-        100% {
-          transform: translate3d( 0, -${(100 / rankingData.three.length) * (rankingData.three.length - 1)}%, 0);
-        }
-      `;
-      const rankingList = styled.div`
-        position: absolute;
-        color: white;
-        font-size: 26px;
-        animation-name: ${ani};
-        animation-duration: ${rankingData.three.length * 3}s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      `;
-
-      setRankingList3(rankingList);
-    }
-    if (rankingData.four.length > 0) {
-      let count = rankingData.four.length * 2 - 1;
-      let duration = (100 / count);
-      let offset = duration / 2;
-      const ani = keyframes`
-        ${rankingData.four.map((data, i) => {
-      
-            return `
-              ${(duration + offset) * i}%, ${((duration + offset) * i) + duration}% {
-                transform: translate3d( 0, -${(100 / rankingData.four.length) * (i)}%, 0);
-              }
-            `;
-          
-        })}
-        100% {
-          transform: translate3d( 0, -${(100 / rankingData.four.length) * (rankingData.four.length - 1)}%, 0);
-        }
-      `;
-      const rankingList = styled.div`
-        position: absolute;
-        color: white;
-        font-size: 26px;
-        animation-name: ${ani};
-        animation-duration: ${rankingData.four.length * 3}s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      `;
-
-      setRankingList4(rankingList);
-    }
-  }, [rankingData]);
-
-  
-
-
   return (
     <div className="background">
       {
         message.type === 'R' &&
         <>
           <div className="ranking-list-container" style={{ top: '136px', left: '288px' }}>
-            <RankingList>
-              {
-                rankingData.one.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
-              }
-            </RankingList>
+            <RankingList 
+              item={rankingData.one}
+            />
           </div>
           <div className="ranking-list" style={{ top: '136px', left: '548px' }}>
             {
@@ -221,11 +66,9 @@ export default function Home() {
             }
           </div>
           <div className="ranking-list-container" style={{ top: '293px', left: '288px' }}>
-            <RankingList2>
-              {
-                rankingData.two.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
-              }
-            </RankingList2>
+            <RankingList 
+              item={rankingData.two}
+            />
           </div>
           <div className="ranking-list" style={{ top: '293px', left: '548px', color: 'white' }}>
             {
@@ -233,21 +76,17 @@ export default function Home() {
             }
           </div>
           <div className="ranking-list-container" style={{ top: '443px', left: '288px' }}>
-            <RankingList3>
-              {
-                rankingData.three.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
-              }
-            </RankingList3>
+            <RankingList 
+              item={rankingData.three}
+            />
           </div>
           <div className="ranking-list" style={{ top: '446px', left: '548px', textAlign: 'center', width: '46px' }}>
             50
           </div>
           <div className="ranking-list-container" style={{ top: '583px', left: '288px' }}>
-            <RankingList4>
-              {
-                rankingData.four.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
-              }
-            </RankingList4>
+            <RankingList 
+              item={rankingData.four}
+            />
           </div>
           <div className="ranking-list" style={{ top: '583px', left: '548px', textAlign: 'center', width: '46px' }}>
             {
@@ -375,4 +214,44 @@ export default function Home() {
       }
     </div>
   );
-}
+};
+
+const RankingList = ({ item  }) => {
+  // 時間軸分段
+  let count = item.length * 2 - 1;
+  // 每段的時間區間
+  let duration = (100 / count);
+  // 停留時間
+  let offset = duration - 5;
+  const ani = keyframes`
+    ${item.map((data, i) => {
+      return `
+        ${(duration + offset) * i}%, ${((duration + offset) * i) + duration}% {
+          transform: translate3d( 0, -${(100 / item.length) * (i)}%, 0);
+        }
+      `;
+    })}
+    100% {
+      transform: translate3d( 0, -${(100 / item.length) * (item.length - 1)}%, 0);
+    }
+  `;
+  const Ranking = styled.div`
+    position: absolute;
+    color: white;
+    font-size: 26px;
+    animation-name: ${ani};
+    animation-duration: ${item.length * 3}s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  `;
+  
+  return (
+    <Ranking>
+      {
+        item.map((data) => 
+          <div key={data.id} className="ranking-list-name">{data.name}</div>
+        )
+      }
+    </Ranking>
+  );
+};
