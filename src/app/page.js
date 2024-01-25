@@ -29,7 +29,7 @@ export default function Home() {
   }, [message.type]);
 
   useEffect(() => {
-    const height = document?.getElementById('list')?.scrollHeight > 620 ? document?.getElementById('list')?.scrollHeight - 580 : 0;
+    const height = document?.getElementById('list')?.scrollHeight > 660 ? document?.getElementById('list')?.scrollHeight - 580 : 0;
     const keyframe = keyframes`
     0% {
       -webkit-transform: translate3d(0, 0, 0);
