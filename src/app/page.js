@@ -22,7 +22,7 @@ export default function Home() {
     });
 
     const { result } = await response.json();
-    
+
     let temp = {
       one: [],
       two: [],
@@ -65,7 +65,7 @@ export default function Home() {
               150
             }
           </div>
-          <div className="ranking-list-container" style={{ top: '293px', left: '288px' }}>
+          <div className="ranking-list-container" style={{ top: '288px', left: '288px' }}>
             <RankingList 
               item={rankingData.two}
             />
@@ -83,7 +83,7 @@ export default function Home() {
           <div className="ranking-list" style={{ top: '446px', left: '548px', textAlign: 'center', width: '46px' }}>
             50
           </div>
-          <div className="ranking-list-container" style={{ top: '583px', left: '288px' }}>
+          <div className="ranking-list-container" style={{ top: '580px', left: '288px' }}>
             <RankingList 
               item={rankingData.four}
             />
