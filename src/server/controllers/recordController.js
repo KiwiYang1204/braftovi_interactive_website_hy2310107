@@ -8,9 +8,25 @@ const getRecords = async (req, res) => {
       .populate('user')
       .exec();
 
+    let rank = 1;
+    let temp = result.map((data, i) => {
+      if (i === 0) {
+        return { _id: data._id, rank: rank, user: { _id: data.user._id, username: data.user.username }, score: data.score };
+      } else {
+        if (data.score < result[i - 1].score) {
+          rank += 1;
+          return { _id: data._id, user: { _id: data.user._id, username: data.user.username }, score: data.score, rank: rank };
+        } else {
+          return { _id: data._id, user: { _id: data.user._id, username: data.user.username }, score: data.score, rank: rank };
+        }
+      }
+    });
+
+    // console.log(temp);
+    // console.log(result);
     return res.status(200).send({
       success: true,
-      result
+      result: temp
     });
   } catch (e) {
     return res.status(500).send({
