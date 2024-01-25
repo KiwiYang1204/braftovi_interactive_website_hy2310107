@@ -1,6 +1,7 @@
 const express = require('express');
 const { Server } = require('socket.io');
 const { createServer } = require('http');
+require('dotenv').config();
 
 const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
@@ -11,7 +12,7 @@ const cors = require('cors');
 const bodyPaser = require('body-parser');
 
 const mongoose = require('mongoose');
-const mongodbUrl = 'mongodb+srv://kiwi:ntVRH4AREwiUDkaL@cluster0.rj2uan9.mongodb.net/braftovi?retryWrites=true&w=majority';
+const mongodbUrl = process.env.MONGODB_URL;
 
 const expressServer = express();
 const httpServer = createServer(expressServer);
