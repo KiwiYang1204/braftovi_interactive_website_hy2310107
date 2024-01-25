@@ -211,7 +211,7 @@ export default function Home() {
           <div className="ranking-list-container" style={{ top: '136px', left: '288px' }}>
             <RankingList>
               {
-                rankingData.one.map((data) => <div key={data.id} style={{ marginBottom: '1rem' }}>{data.name}</div>)
+                rankingData.one.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
               }
             </RankingList>
           </div>
@@ -223,7 +223,7 @@ export default function Home() {
           <div className="ranking-list-container" style={{ top: '293px', left: '288px' }}>
             <RankingList2>
               {
-                rankingData.two.map((data) => <div key={data.id} style={{ marginBottom: '1rem' }}>{data.name}</div>)
+                rankingData.two.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
               }
             </RankingList2>
           </div>
@@ -232,10 +232,10 @@ export default function Home() {
               100
             }
           </div>
-          <div className="ranking-list-container" style={{ top: '446px', left: '288px' }}>
+          <div className="ranking-list-container" style={{ top: '443px', left: '288px' }}>
             <RankingList3>
               {
-                rankingData.three.map((data) => <div key={data.id} style={{ marginBottom: '1rem' }}>{data.name}</div>)
+                rankingData.three.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
               }
             </RankingList3>
           </div>
@@ -245,7 +245,7 @@ export default function Home() {
           <div className="ranking-list-container" style={{ top: '583px', left: '288px' }}>
             <RankingList4>
               {
-                rankingData.four.map((data) => <div key={data.id} style={{ marginBottom: '1rem' }}>{data.name}</div>)
+                rankingData.four.map((data) => <div key={data.id} className="ranking-list-name">{data.name}</div>)
               }
             </RankingList4>
           </div>
