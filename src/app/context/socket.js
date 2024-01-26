@@ -16,7 +16,7 @@ export const SocketProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const ws = io('ws://34.82.217.255:8080/', {
+    const ws = io('ws://35.247.53.169:8080/', {
       transports: ['websocket']
     });
 

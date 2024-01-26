@@ -11,7 +11,7 @@ export default function Home() {
   const [RankingList, setRankingList] = useState(styled.div``);
 
   const fetchRankingData = async () => {
-    const response = await fetch('http://34.82.217.255:8080/record', {
+    const response = await fetch('http://35.247.53.169:8080/record', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -62,7 +62,7 @@ export default function Home() {
                   <div key={data.id} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                     <div  className="ranking-item">
                       <div style={{ position: 'absolute', top: '-8px', left: '-80px' }}>
-                        <Image width={data.rank !== 4 ? 69 : 65} height={data.rank !== 4 ? 98 : 65} src={`http://34.82.217.255:8080/assets/no${data.rank}.png`} alt="rank"/>
+                        <Image width={data.rank !== 4 ? 69 : 65} height={data.rank !== 4 ? 98 : 65} src={`http://35.247.53.169:8080/assets/no${data.rank}.png`} alt="rank"/>
                       </div>
                       <div style={{ position: 'absolute', top: '13px', left: '30px', color: 'white', fontSize: '24px' }}>{data.user.username}</div>
                       <div style={{ position: 'absolute', top: '13px', left: '295px', color: 'white', fontSize: '24px', width: '45px', textAlign: 'center' }}>{data.score}</div>
@@ -78,7 +78,7 @@ export default function Home() {
         message.type === 'Q' &&
         message.round === 1 &&
         <Image 
-          src="http://34.82.217.255:8080/assets/q1.png"
+          src="http://35.247.53.169:8080/assets/q1.png"
           width={768}
           height={960}
           alt='q1'
@@ -89,7 +89,7 @@ export default function Home() {
         message.round === 1 &&
         message.isCorrect &&
         <Image 
-          src="http://34.82.217.255:8080/assets/a1v.png"
+          src="http://35.247.53.169:8080/assets/a1v.png"
           width={768}
           height={960}
           alt="a1v"
@@ -100,7 +100,7 @@ export default function Home() {
         message.round === 1 &&
         !message.isCorrect &&
         <Image 
-          src="http://34.82.217.255:8080/assets/a1x.png"
+          src="http://35.247.53.169:8080/assets/a1x.png"
           width={768}
           height={960}
           alt='a1x'
@@ -110,7 +110,7 @@ export default function Home() {
         message.type === 'Q' &&
         message.round === 2 &&
         <Image 
-          src="http://34.82.217.255:8080/assets/q2.png"
+          src="http://35.247.53.169:8080/assets/q2.png"
           width={768}
           height={960}
           alt='q2'
@@ -121,7 +121,7 @@ export default function Home() {
         message.round === 2 &&
         message.isCorrect &&
         <Image 
-          src="http://34.82.217.255:8080/assets/a2v.png"
+          src="http://35.247.53.169:8080/assets/a2v.png"
           width={768}
           height={960}
           alt='a2v'
@@ -132,7 +132,7 @@ export default function Home() {
         message.round === 2 &&
         !message.isCorrect &&
         <Image 
-          src="http://34.82.217.255:8080/assets/a2x.png"
+          src="http://35.247.53.169:8080/assets/a2x.png"
           width={768}
           height={960}
           alt='a2x'
@@ -142,7 +142,7 @@ export default function Home() {
         message.type === 'Q' &&
         message.round === 3 &&
         <Image 
-          src="http://34.82.217.255:8080/assets/q3.png"
+          src="http://35.247.53.169:8080/assets/q3.png"
           width={768}
           height={960}
           alt='q3'
@@ -153,7 +153,7 @@ export default function Home() {
         message.round === 3 &&
         message.isCorrect &&
         <Image 
-          src="http://34.82.217.255:8080/assets/a3v.png"
+          src="http://35.247.53.169:8080/assets/a3v.png"
           width={768}
           height={960}
           alt='a3v'
@@ -164,7 +164,7 @@ export default function Home() {
         message.round === 3 &&
         !message.isCorrect &&
         <Image 
-          src="http://34.82.217.255:8080/assets/a3x.png"
+          src="http://35.247.53.169:8080/assets/a3x.png"
           width={768}
           height={960}
           alt='a3x'
@@ -174,7 +174,7 @@ export default function Home() {
         message.type === 'S' &&
         message.score === 0 &&
         <Image 
-          src="http://34.82.217.255:8080/assets/0p.png"
+          src="http://35.247.53.169:8080/assets/0p.png"
           width={768}
           height={960}
           alt='0p'
@@ -184,7 +184,7 @@ export default function Home() {
         message.type === 'S' &&
         message.score === 50 &&
         <Image 
-          src="http://34.82.217.255:8080/assets/50p.png"
+          src="http://35.247.53.169:8080/assets/50p.png"
           width={768}
           height={960}
           alt='50p'
@@ -194,7 +194,7 @@ export default function Home() {
         message.type === 'S' &&
         message.score === 100 &&
         <Image 
-          src="http://34.82.217.255:8080/assets/100p.png"
+          src="http://35.247.53.169:8080/assets/100p.png"
           width={768}
           height={960}
           alt='100p'
@@ -204,7 +204,7 @@ export default function Home() {
         message.type === 'S' &&
         message.score === 150 &&
         <Image 
-          src="http://34.82.217.255:8080/assets/150p.png"
+          src="http://35.247.53.169:8080/assets/150p.png"
           width={768}
           height={960}
           alt='150p'
