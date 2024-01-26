@@ -6,7 +6,7 @@ import styled, { keyframes } from "styled-components";
 import Image from "next/image";
 
 export default function Home() {
-  const { message, sendMessage } = useContext(SocketContext);
+  const { message } = useContext(SocketContext);
   const [rankingData, setRankingData] = useState([]);
   const [RankingList, setRankingList] = useState(styled.div``);
 
@@ -55,7 +55,7 @@ export default function Home() {
       {
         message.type === 'R' &&
         <div className="ranking-list">
-          <div id='list' style={{ marginLeft: '5.5rem' }}>
+          <div id='list'>
             <RankingList>
               {
                 rankingData?.map((data) => (
@@ -214,42 +214,42 @@ export default function Home() {
   );
 };
 
-const RankingList = ({ item  }) => {
-  // 時間軸分段
-  let count = item.length * 2 - 1;
-  // 每段的時間區間
-  let duration = (100 / count);
-  // 停留時間
-  let offset = duration - 5;
-  const ani = keyframes`
-    ${item.map((data, i) => {
-      return `
-        ${(duration + offset) * i}%, ${((duration + offset) * i) + duration}% {
-          transform: translate3d( 0, -${(100 / item.length) * (i)}%, 0);
-        }
-      `;
-    })}
-    100% {
-      transform: translate3d( 0, -${(100 / item.length) * (item.length - 1)}%, 0);
-    }
-  `;
-  const Ranking = styled.div`
-    position: absolute;
-    color: white;
-    font-size: 26px;
-    animation-name: ${ani};
-    animation-duration: ${item.length * 3}s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-  `;
+// const RankingList = ({ item  }) => {
+//   // 時間軸分段
+//   let count = item.length * 2 - 1;
+//   // 每段的時間區間
+//   let duration = (100 / count);
+//   // 停留時間
+//   let offset = duration - 5;
+//   const ani = keyframes`
+//     ${item.map((data, i) => {
+//       return `
+//         ${(duration + offset) * i}%, ${((duration + offset) * i) + duration}% {
+//           transform: translate3d( 0, -${(100 / item.length) * (i)}%, 0);
+//         }
+//       `;
+//     })}
+//     100% {
+//       transform: translate3d( 0, -${(100 / item.length) * (item.length - 1)}%, 0);
+//     }
+//   `;
+//   const Ranking = styled.div`
+//     position: absolute;
+//     color: white;
+//     font-size: 26px;
+//     animation-name: ${ani};
+//     animation-duration: ${item.length * 3}s;
+//     animation-iteration-count: infinite;
+//     animation-timing-function: linear;
+//   `;
   
-  return (
-    <Ranking>
-      {
-        item.map((data) => 
-          <div key={data.id} className="ranking-list-name">{data.name}</div>
-        )
-      }
-    </Ranking>
-  );
-};
+//   return (
+//     <Ranking>
+//       {
+//         item.map((data) => 
+//           <div key={data.id} className="ranking-list-name">{data.name}</div>
+//         )
+//       }
+//     </Ranking>
+//   );
+// };
