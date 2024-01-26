@@ -48,7 +48,6 @@ export default function Home() {
     `;
 
     setRankingList(div);
-    console.log(height);
   }, [rankingData]);
 
   return (
@@ -75,15 +74,6 @@ export default function Home() {
           </div>
         </div>
       }
-      {/* {
-        message.type === 'R' &&
-        <Image 
-          src="http://34.82.217.255:8080/assets/ranking.png"
-          width={768}
-          height={960}
-          alt="ranking"
-        />
-      } */}
       {
         message.type === 'Q' &&
         message.round === 1 &&
